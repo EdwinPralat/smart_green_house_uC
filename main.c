@@ -18,15 +18,7 @@ void gpio_init()
     P1DIR |= BIT0;  // Set P1.0 to output direction
     P1DIR |= BIT7;  // Set P1.7 to output direction
     P1OUT != BIT7;  // Set P1.7 to HIGH
-//    P1SEL |= 0x80;
-//    P1SEL2 &= ~(0x80);
     P1OUT &= ~BIT0;
-
-//    P1DIR &= ~BIT3;
-//    P1REN |= BIT3;
-////    P1IES |= BIT3;
-////    P1IE |= BIT3;
-//    P1IFG &= ~BIT3;
 
 };
 
@@ -74,8 +66,8 @@ int main(void)
 #pragma vector=TIMER1_A0_VECTOR
 __interrupt void TIMER1_A0_ISR(void)
 {
-//    TA1CCTL0 &= ~BIT0;
-//    TACTL &= ~BIT0;
+    TA1CCTL0 &= ~BIT0;
+    TACTL &= ~BIT0;
     _BIS_SR(GIE); // sleep untill interupt
 
     get_temp_and_humidity();
